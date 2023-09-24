@@ -4,6 +4,7 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+import random
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
@@ -101,3 +102,21 @@ class AptekaScrapyDownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info("Spider opened: %s" % spider.name)
+
+
+class ProxyMiddleware:
+    def __init__(self, proxy_list):
+        self.proxy_list = proxy_list
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        # Загрузка списка прокси из файла proxy_export.txt
+        with open('proxy_export.txt', 'r') as f:
+            proxy_list = [line.strip() for line in f.readlines()]
+            print('proxy_list', proxy_list)
+        return cls(proxy_list)
+
+    def process_request(self, request, spider):
+        # Выбор случайного прокси из списка
+        proxy = random.choice(self.proxy_list)
+        request.meta['proxy'] = proxy

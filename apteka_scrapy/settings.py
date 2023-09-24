@@ -8,6 +8,11 @@ NEWSPIDER_MODULE = "apteka_scrapy.spiders"
 
 ITEM_PIPELINES = {'apteka_scrapy.pipelines.AptekaScrapyPipeline': 300}
 
+# DOWNLOADER_MIDDLEWARES = {
+#     'apteka_scrapy.middlewares.ProxyMiddleware': 325,
+# }
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:39.0) Gecko/20100101 Firefox/39.0'
 
@@ -39,3 +44,4 @@ CATEGORY_BY_PARSING = [
 
 # время задержки запросов 
 DOWNLOAD_DELAY = 1
+

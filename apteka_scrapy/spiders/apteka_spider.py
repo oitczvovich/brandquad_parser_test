@@ -61,7 +61,7 @@ class AptekaSpiderSpider(scrapy.Spider):
             "timestamp": int(time.time()),
             "RPC": rpc,
             "url": response.url,
-            "title": title,
+            "title": title['title_out'],
             "marketing_tags": self.get_clean_text(
                 header_description.css("span.ui-tag::text").getall()
                 ),

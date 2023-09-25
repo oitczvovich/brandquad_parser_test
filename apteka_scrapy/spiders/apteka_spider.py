@@ -158,7 +158,7 @@ class AptekaSpiderSpider(scrapy.Spider):
         if match:
             result = match.group(1)
             return result, True
-        return "N/A", False
+        return 0, False
 
     def get_assets(self, response: str) -> str | None:
         """Функция возвращает main_image - ссылк на главную картинку.\n

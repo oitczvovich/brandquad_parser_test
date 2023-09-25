@@ -1,0 +1,2 @@
+# через запятую указываем proxy, возможно использовать  proxy без аутентификации.
+PROXY_LIST=host:posrt:login:password, host:posrt:login:password 
